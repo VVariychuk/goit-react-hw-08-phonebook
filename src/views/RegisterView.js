@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth';
 
+import Container from '../components/Container'
+
 const styles = {
   form: {
     width: 320,
@@ -36,8 +38,8 @@ class RegisterView extends Component {
     const { name, email, password } = this.state;
 
     return (
-      <div>
-        <h1>Страница регистрации</h1>
+      <Container>
+        <h1>Registration</h1>
 
         <form
           onSubmit={this.handleSubmit}
@@ -76,7 +78,7 @@ class RegisterView extends Component {
 
           <button type="submit">Register</button>
         </form>
-      </div>
+      </Container>
     );
   }
 }

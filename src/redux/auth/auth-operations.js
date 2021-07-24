@@ -1,6 +1,8 @@
 import axios from 'axios';
 import authActions from './auth-actions';
 
+import { toast } from 'react-toastify';
+
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
 const token = {
@@ -22,6 +24,7 @@ const register = credentials => async dispatch => {
     dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
     dispatch(authActions.registerError(error.message));
+    toast.error('Register error! Please try again');
   }
 };
 
@@ -35,6 +38,7 @@ const logIn = credentials => async dispatch => {
     dispatch(authActions.loginSuccess(response.data));
   } catch (error) {
     dispatch(authActions.loginError(error.message));
+    toast.error('Invalid email or password!');
   }
 };
 
@@ -47,7 +51,8 @@ const logOut = () => async dispatch => {
     token.unset();
     dispatch(authActions.logoutSuccess());
   } catch (error) {
-    dispatch(authActions.logoutError(error.message));
+    dispatch(authActions.logoutError(error.message));    
+    toast.error('Something went wrong! Please reload the page!');
   }
 };
 
@@ -69,6 +74,8 @@ const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(authActions.getCurrentUserSuccess(response.data));
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error.message));
+    token.unset();
+     toast.warn('Oops time is out. Log in again');
   }
 };
 

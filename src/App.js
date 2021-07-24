@@ -1,10 +1,12 @@
 import React, {  Component, Suspense, lazy } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { authOperations } from './redux/auth';
 
-import Container from './components/Container';
 import AppBar from './components/AppBar/AppBar';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
@@ -21,7 +23,7 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
+      <>
         <AppBar />
 
         <Suspense fallback = {<h1>Loading...</h1>}>
@@ -46,7 +48,9 @@ class App extends Component {
             />
          </Switch>
         </Suspense>
-      </Container>
+
+        <ToastContainer autoClose={3700} position="top-center" />
+      </>
     );
   }
 }
