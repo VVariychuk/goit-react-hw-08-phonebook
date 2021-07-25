@@ -18,7 +18,7 @@ const ContactsView = lazy(() => import('./views/ContactsView'));
 
 class App extends Component {
   componentDidMount() {
-    this.props.onGetCurrentUser();
+    this.props.onGetCurrentUser();    
   }
 
   render() {

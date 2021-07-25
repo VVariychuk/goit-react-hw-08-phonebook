@@ -34,7 +34,7 @@ class ContactsView extends Component {
             ? <h1>Loading...</h1>
               : <>
               
-             {contacts.length>1 && <Filter />}
+              <Filter />
               
               <ContactList />
             </>
